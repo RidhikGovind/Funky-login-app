@@ -1,0 +1,28 @@
+{
+  "name": "databaseloginapp",
+  "version": "1.0.0",
+  "description": "A simple login app that stores details of user in a database a\u001b[C\u001b[C\u001b[C\u001b[C",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RidhikGovind/database-app.git"
+  },
+  "keywords": [
+    "database",
+    "node.js",
+    "login"
+  ],
+  "author": "Ridhik Govind",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RidhikGovind/database-app/issues"
+  },
+  "homepage": "https://github.com/RidhikGovind/database-app#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nedb": "^1.8.0"
+  }
+}

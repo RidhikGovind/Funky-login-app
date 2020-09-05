@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Index</title>
+</head>
+<body>
+    <h1>Database for FunkyLogin</h1>
+
+
+    <script>
+        async function getDatabase(){
+            const response = await fetch('/database');
+            const data = await response.json();
+
+            for(logs of data) {
+                const p = document.createElement('p');
+                const userName= document.createElement('div');
+                const userPassword = document.createElement('div');
+              
+                userName.textContent = logs.name;
+                userPassword.textContent = logs.password;
+                p.append(userName, userPassword);
+                document.body.append(p);
+            }
+        }
+
+        getDatabase();
+    </script>
+</body>
+</html>

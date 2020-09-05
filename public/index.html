@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database app</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            display: block;
+        }
+
+        form {
+
+            text-align: center;
+
+        }
+
+        form input {
+            margin: 12px;
+        }
+
+        button {
+            width: 150px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Database Login App</h1>
+
+    <form>
+        <div>
+            <input class="login" type="text" placeholder="Enter your funky login name" required>
+        </div>
+        <div>
+            <input class="password" type="text" placeholder="Enter your freaky password" required>
+        </div>
+        <div>
+            <input class="mood" type="text" placeholder="Enter your Mood" required>
+        </div>
+        <button class="submit-btn">SUBMIT</button>
+    </form>
+
+
+    <script>
+        const form = document.querySelector('form')
+        const login = document.querySelector('.login')
+        const password = document.querySelector('.password')
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // getData();
+
+            async function getData() {
+                const data = {
+                    name: login.value,
+                    password: password.value
+                }
+
+
+                const options = {  //describing the type of method,header and body type
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data) //converting JS string into JSON 
+                }
+                const response = await fetch('/sample', options)
+                const json = await response.json();
+                console.log(json);
+                form.reset()
+            }
+
+            getData();
+        })
+
+
+
+    </script>
+</body>
+
+</html>
