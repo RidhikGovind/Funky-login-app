@@ -125,12 +125,13 @@
         }
 
         @media(max-width:370px) {
-            h1{
+            h1 {
                 font-size: 26px;
             }
+
             form {
 
-              
+
                 padding-top: 5em
             }
 
@@ -166,7 +167,7 @@
             padding: 30px 15px;
             position: absolute;
             width: 65vw;
-            
+
             background-color: white;
             right: 10px;
         }
@@ -225,7 +226,7 @@
         </form>
 
         <div class="entries">
-            <a href=""><button class="entry-btn">VIEW DATABASE </button></a>
+            <a href="dbindex.html"><button class="entry-btn">VIEW DATABASE </button></a>
         </div>
     </div>
 
@@ -236,8 +237,9 @@
         const form = document.querySelector('form')
         const login = document.querySelector('.login')
         const password = document.querySelector('.password')
+        const mood = document.querySelector('.mood');
 
-
+        console.log()
 
 
 
@@ -245,29 +247,46 @@
             e.preventDefault();
             // getData();
 
-            async function getData() {
-                const data = {
-                    name: login.value,
-                    password: password.value
-                }
 
-
-                const options = {  //describing the type of method,header and body type
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data) //converting JS string into JSON 
-                }
-                const response = await fetch('/sample', options)
-                const json = await response.json();
-                console.log(json);
-                form.reset()
-            }
 
             getData();
         })
 
+         function getData() {
+
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition( async position => {
+                    const lat = position.coords.latitude;
+                    const long = position.coords.longitude;
+                    // console.log(lat, long);
+
+
+                    const data = {
+                        name: login.value,
+                        password: password.value,
+                        mood: mood.value,
+                        latitude: lat,
+                        longitude: long
+                    }
+
+
+                    const options = {  //describing the type of method,header and body type
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data) //converting JS string into JSON 
+                    }
+                    const response = await fetch('/sample', options)
+                    const json = await response.json();
+                    console.log(json);
+                    form.reset()
+                })
+
+            } else {
+                console.log('geolocation not available');
+            }
+        }
 
 
     </script>

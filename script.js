@@ -1,6 +1,7 @@
 //server
 const express = require('express');
 const Datastore = require('nedb');
+require('dotenv').config()
 
 const app = express();
 const port = 3000;
@@ -12,7 +13,7 @@ const database = new Datastore('database.db')
 database.loadDatabase();
 
 app.listen(port, () => console.log('hey this is working at port 3000'));
-
+console.log(process.env);
 
 app.post(('/sample'), (request, response) => {
     const data = request.body;
@@ -28,7 +29,7 @@ app.post(('/sample'), (request, response) => {
 
 app.get(('/database'), (request, response) => {
     database.find({}, (err, result) => {
-       
-       return response.json(result);
+
+        return response.json(result);
     })
 })

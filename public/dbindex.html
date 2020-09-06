@@ -1,32 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+
+
     <title>Database Index</title>
+
+
+    <style>
+        #mapid {
+            height: 300px;
+        }
+    </style>
 </head>
+
 <body>
     <h1>Database for FunkyLogin</h1>
 
+    <div id="mapid"></div>
+
+
+
 
     <script>
-        async function getDatabase(){
+        // let lat = 0, long = 0;
+
+        // async function map() {
+        //     getDatabase();
+            
+            
+        // }
+
+
+
+        // map()
+        async function getDatabase() {
             const response = await fetch('/database');
             const data = await response.json();
 
-            for(logs of data) {
+
+            for (logs of data) {
                 const p = document.createElement('p');
-                const userName= document.createElement('div');
+                const userName = document.createElement('div');
                 const userPassword = document.createElement('div');
-              
+                const mood = document.createElement('div');
+                const coords = document.createElement('div');
+             
+
+             
                 userName.textContent = logs.name;
                 userPassword.textContent = logs.password;
-                p.append(userName, userPassword);
+                mood.textContent = logs.mood;
+                coords.textContent = `Latitude is ${logs.latitude} and Longitude is ${logs.longitude}`
+                p.append(userName, userPassword, mood, coords);
+
                 document.body.append(p);
             }
+            const MAP_API_TOKEN = process.env.API_KEY;
+            const map = L.map('mapid').setView([logs.latitude, logs.longitude], 13)
+
+            L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${MAP_API_TOKEN}`, {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox/streets-v11',
+                tileSize: 512,
+                zoomOffset: -1,
+                accessToken: 'your.mapbox.access.token'
+            }).addTo(map);
+
+
+            const marker = L.marker([logs.latitude, logs.longitude]).addTo(map);
         }
 
         getDatabase();
     </script>
+
+
+
 </body>
+
 </html>
