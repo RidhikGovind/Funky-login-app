@@ -9,7 +9,7 @@
     <style>
         * {
             font-family: 'Poppins', sans-serif;
-            font-weight: 300;
+
 
         }
 
@@ -18,9 +18,8 @@
             font-family: 'Poppins', sans-serif;
             padding: 1rem;
             padding-top: 2.5rem;
-
-
-
+            background-color: #fde7f9;
+            background-image: linear-gradient(315deg, #fde7f9 0%, #aacaef 74%);
 
 
         }
@@ -29,9 +28,10 @@
 
             font-weight: 300;
             padding: 0.3em;
-            background-color: lightgray;
+            background-color: #3E486F;
+            color: white;
             position: absolute;
-
+            font-weight: 600;
             border-radius: 10px;
 
 
@@ -40,7 +40,7 @@
         form {
 
             text-align: center;
-            padding-top: 6em
+            padding-top: 5em
         }
 
         form input {
@@ -48,26 +48,26 @@
             padding: 5px 10px;
             width: 250px;
             border-radius: 8px;
-            outline:none;
-            border:none;
-           
-           
-            
+            outline: none;
+            border: none;
+
+
+
         }
 
         form input::placeholder {
             color: grey;
             transition: 0.5s ease all;
-            
+
         }
 
         form input:hover::placeholder {
-            background-color: rgb(70, 158, 199);
-            color: white;
+
+            color: black;
             font-size: 16px;
-          
-            
-            
+
+
+
         }
 
         button {
@@ -76,15 +76,22 @@
             cursor: pointer;
             border: none;
             outline: none;
-            background-color: black;
+            background-color: #7797b6bb;
             color: white;
             padding: 5px 7px;
             transition: 0.3s ease all;
-            border-radius:5px;
+            border-radius: 5px;
+            font-weight: 600;
+            line-height: 28px;
 
         }
-        button:hover{
-            background-color: rgba(47, 131, 241, 0.623);
+
+        button:hover {
+            background-color: #3E486F;
+            /* color: black;
+            background-color: #fee2f8;
+            background-image: linear-gradient(315deg, #fee2f8 0%, #dcf8ef 74%); */
+
         }
 
         .heading {
@@ -96,9 +103,100 @@
         }
 
         .container {
-            background-color: lightslategrey;
+            background-color: #0b0d1d;
             height: 100vh;
             border-radius: 10px;
+        }
+
+        .app-guide-btn {
+
+            background-color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            float: right;
+            right: 15px;
+            top: 75px;
+            cursor: pointer;
+            animation: bounce 2.5s linear infinite;
+            transition: 0.3s ease all;
+        }
+
+        @media(max-width:370px) {
+            h1{
+                font-size: 26px;
+            }
+            form {
+
+              
+                padding-top: 5em
+            }
+
+            .app-guide-btn {
+                top: 50px;
+            }
+
+        }
+
+        .app-guide-btn:hover {
+            animation: none;
+        }
+
+        .app-guide-btn:after {
+            content: 'i';
+            font-weight: 900;
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            background-color: red;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+
+        }
+
+        .app-guide-btn:before {
+            transition: 0.5s ease all;
+            display: flex;
+            justify-content: center;
+            border-radius: 10px;
+            flex-wrap: wrap;
+            padding: 30px 15px;
+            position: absolute;
+            width: 65vw;
+            
+            background-color: white;
+            right: 10px;
+        }
+
+        .app-guide-btn:hover:before {
+            content:
+                'WHAT IS THIS? - This is a simple app which demonstrate how a database work. HOW IT WORKS ? - Fill up the fields and press  "Submit"  and all the details will be stored in a database. You can further view the database entries by clicking "View Database" button. ';
+
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            25% {
+                transform: translateY(-4px);
+            }
+
+            50% {
+                transform: translateY(0);
+            }
+
+            75% {
+                transform: translateY(4px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -110,18 +208,25 @@
             <h1><em>DATABASE LOGIN APP</em></h1>
         </div>
 
+
+        <div class="app-guide-btn"></div>
+
         <form>
             <div class="login-part">
-                <input class="login" type="text" placeholder="Enter your funky login name" required>
+                <input class="login" type="text" placeholder="Enter your Funky login name" required>
             </div>
             <div class="password-part">
-                <input class="password" type="text" placeholder="Enter your freaky password" required>
+                <input class="password" type="text" placeholder="Enter your Freaky password" required>
             </div>
             <div class="mood-part">
-                <input class="mood" type="text" placeholder="Enter your Mood" required>
+                <input class="mood" type="text" placeholder="Enter your Forever Mood" required>
             </div>
             <button class="submit-btn">SUBMIT</button>
         </form>
+
+        <div class="entries">
+            <a href=""><button class="entry-btn">VIEW DATABASE </button></a>
+        </div>
     </div>
 
 
@@ -131,9 +236,9 @@
         const form = document.querySelector('form')
         const login = document.querySelector('.login')
         const password = document.querySelector('.password')
-        
-       
-       
+
+
+
 
 
         form.addEventListener('submit', (e) => {
