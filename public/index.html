@@ -4,54 +4,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Database app</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
+    <title>Database Login app</title>
     <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+
+        }
+
         body {
             text-align: center;
+            font-family: 'Poppins', sans-serif;
+            padding: 1rem;
+            padding-top: 2.5rem;
+
+
+
+
+
         }
 
         h1 {
-            display: block;
+
+            font-weight: 300;
+            padding: 0.3em;
+            background-color: lightgray;
+            position: absolute;
+
+            border-radius: 10px;
+
+
         }
 
         form {
 
             text-align: center;
-
+            padding-top: 6em
         }
 
         form input {
             margin: 12px;
+            padding: 5px 10px;
+            width: 250px;
+            border-radius: 8px;
+            outline:none;
+            border:none;
+           
+           
+            
+        }
+
+        form input::placeholder {
+            color: grey;
+            transition: 0.5s ease all;
+            
+        }
+
+        form input:hover::placeholder {
+            background-color: rgb(70, 158, 199);
+            color: white;
+            font-size: 16px;
+          
+            
+            
         }
 
         button {
             width: 150px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background-color: black;
+            color: white;
+            padding: 5px 7px;
+            transition: 0.3s ease all;
+            border-radius:5px;
 
+        }
+        button:hover{
+            background-color: rgba(47, 131, 241, 0.623);
+        }
+
+        .heading {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container {
+            background-color: lightslategrey;
+            height: 100vh;
+            border-radius: 10px;
         }
     </style>
 </head>
 
 <body>
-    <h1>Database Login App</h1>
 
-    <form>
-        <div>
-            <input class="login" type="text" placeholder="Enter your funky login name" required>
+    <div class="container">
+        <div class="heading">
+            <h1><em>DATABASE LOGIN APP</em></h1>
         </div>
-        <div>
-            <input class="password" type="text" placeholder="Enter your freaky password" required>
-        </div>
-        <div>
-            <input class="mood" type="text" placeholder="Enter your Mood" required>
-        </div>
-        <button class="submit-btn">SUBMIT</button>
-    </form>
+
+        <form>
+            <div class="login-part">
+                <input class="login" type="text" placeholder="Enter your funky login name" required>
+            </div>
+            <div class="password-part">
+                <input class="password" type="text" placeholder="Enter your freaky password" required>
+            </div>
+            <div class="mood-part">
+                <input class="mood" type="text" placeholder="Enter your Mood" required>
+            </div>
+            <button class="submit-btn">SUBMIT</button>
+        </form>
+    </div>
+
+
 
 
     <script>
         const form = document.querySelector('form')
         const login = document.querySelector('.login')
         const password = document.querySelector('.password')
+        
+       
+       
+
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
