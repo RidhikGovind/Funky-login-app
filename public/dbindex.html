@@ -33,21 +33,11 @@
 
 
     <script>
-        // let lat = 0, long = 0;
-
-        // async function map() {
-        //     getDatabase();
-            
-            
-        // }
-
-
-
-        // map()
+       
         async function getDatabase() {
             const response = await fetch('/database');
             const data = await response.json();
-
+           
 
             for (logs of data) {
                 const p = document.createElement('p');
@@ -55,34 +45,41 @@
                 const userPassword = document.createElement('div');
                 const mood = document.createElement('div');
                 const coords = document.createElement('div');
-             
+                const latitude = logs.latitude;
+                const longitude = logs.longitude;
 
-             
+
+
                 userName.textContent = logs.name;
                 userPassword.textContent = logs.password;
                 mood.textContent = logs.mood;
-                coords.textContent = `Latitude is ${logs.latitude} and Longitude is ${logs.longitude}`
+                coords.textContent = `Latitude is ${latitude} and Longitude is ${longitude}`
                 p.append(userName, userPassword, mood, coords);
 
                 document.body.append(p);
-            }
-            const MAP_API_TOKEN = process.env.API_KEY;
-            const map = L.map('mapid').setView([logs.latitude, logs.longitude], 13)
 
-            L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${MAP_API_TOKEN}`, {
+
+                 const map = L.map('mapid').setView([latitude,longitude], 13)
+
+            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
                 maxZoom: 18,
                 id: 'mapbox/streets-v11',
                 tileSize: 512,
                 zoomOffset: -1,
-                accessToken: 'your.mapbox.access.token'
+                accessToken: 'pk.eyJ1IjoicmlkejEwMSIsImEiOiJja2VmcXdiNzcxZWF3MnpydjJtbnFkcWExIn0.35lxBR8ndHUX2SfDZ6s1SQ'
             }).addTo(map);
 
+             const marker = L.marker([latitude,longitude]).addTo(map);
+            }
 
-            const marker = L.marker([logs.latitude, logs.longitude]).addTo(map);
+           
         }
 
+       
         getDatabase();
+
+        
     </script>
 
 
