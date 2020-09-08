@@ -1,0 +1,206 @@
+* {
+   font-family: 'Kumbh Sans', sans-serif;
+
+}
+
+body {
+    text-align: center;
+    padding: 1rem;
+    padding-top: 2.5rem;
+    background-color: #fde7f9;
+    background-image: linear-gradient(315deg, #fde7f9 0%, #aacaef 74%);
+
+}
+
+h1 {
+
+    padding: 0.3em;
+    background-color: #3E486F;
+    color: white;
+    position: absolute;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: 0.3s ease all;
+
+}
+
+h1:hover {
+    padding: 0.3em 1em;
+}
+
+form {
+
+    text-align: center;
+    padding-top: 5em
+}
+
+form input {
+    margin: 12px;
+    padding: 12px 10px;
+    width: 250px;
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    font-size: 1em;
+
+}
+
+form input::placeholder {
+    color: grey;
+    transition: 0.5s ease all;
+
+}
+
+form input:hover::placeholder {
+
+    color: black;
+    font-size: 1.1em;
+
+}
+
+button {
+    width: 150px;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: #7797b6bb;
+    color: white;
+    padding: 5px 10px;
+    transition: 0.3s ease all;
+    border-radius: 5px;
+    font-weight: 600;
+    line-height: 28px;
+
+}
+
+button:hover {
+    background-color: #3E486F;
+    width: 170px;
+
+}
+
+.heading {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container {
+    background-color: #0b0d1d;
+    height: 88vh;
+    border-radius: 10px;
+    position: relative;
+}
+
+.app-guide-btn {
+
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    float: right;
+    right: 15px;
+    top: 75px;
+    cursor: pointer;
+    animation: bounce 2.5s linear infinite;
+    transition: 0.3s ease all;
+}
+
+@media(max-width:370px) {
+    h1 {
+        font-size: 26px;
+    }
+
+    form {
+
+
+        padding-top: 5em
+    }
+
+    .app-guide-btn {
+        top: 50px;
+    }
+
+}
+
+.app-guide-btn:hover {
+    animation: none;
+}
+
+.app-guide-btn:after {
+    content: 'i';
+    font-weight: 900;
+    font-size: 1.5em;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background-color: red;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+
+}
+
+.app-guide-btn:before {
+    transition: 0.5s ease all;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    padding: 30px 15px;
+    position: absolute;
+    width: 65vw;
+
+    background-color: white;
+    right: 10px;
+}
+
+.app-guide-btn:hover:before {
+    content:
+        'WHAT IS THIS? - This is a simple app which demonstrate how a database work. HOW IT WORKS ? - Fill up the fields and press  "Submit"  and all the details will be stored in a database. You can further view the database entries by clicking "View Database" button. ';
+
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(-6px);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    75% {
+        transform: translateY(6px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.footer {
+
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+
+}
+
+.footer a {
+    color: white;
+    transition: 0.3s ease all;
+}
+
+.footer a:hover {
+    font-size: 20px;
+}

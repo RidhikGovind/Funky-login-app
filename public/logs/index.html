@@ -12,52 +12,14 @@
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="style.css">
 
 
     <title>Database Login App</title>
 
 
     <style>
-        * {
-            font-family: 'Kumbh Sans', sans-serif;
 
-
-        }
-
-        h1 {
-            background-color: #3E486F;
-            color: white;
-            width: fit-content;
-            padding: 10px 10px;
-            border-radius: 10px;
-        }
-
-        body {
-            padding: 10px;
-            background-color: #007ea7;
-            background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);
-            background-repeat: no-repeat;
-        }
-
-        #mapid {
-            height: 250px;
-            border-radius: 10px;
-
-        }
-
-        .dbContainer {}
-
-        p {
-            margin: 10px;
-            padding: 13px 0;
-            background-color: #313750;
-            text-align: center;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-
-        }
     </style>
 </head>
 
@@ -67,11 +29,6 @@
     <div id="mapid"></div>
 
     <div class="dbContainer"></div>
-
-
-
-
-
 
     <script>
 
@@ -85,6 +42,8 @@
 
             // console.log(data[0].latitude, data[0].longitude);
 
+
+            //creating leaflet.js map
             const mymap = L.map('mapid').setView([lat, long], 15);
 
             const attribution =
@@ -97,17 +56,13 @@
             marker.bindPopup("<b>Your Secret Hideout !</b><br>Place where you chill.").openPopup();
 
 
-
-
+            //creating a variable "logs" and then looping over the data to fetch the objects
             for (logs of data) {
                 const para = document.createElement('p');
                 const userName = document.createElement('div');
                 const userPassword = document.createElement('div');
                 const mood = document.createElement('div');
                 const coords = document.createElement('div');
-
-
-
 
                 userName.textContent = `Your Funky Username is - ${logs.name}`;
                 userPassword.textContent = `Your Freaky Password is - ${logs.password}`;
@@ -118,16 +73,9 @@
                 dbContainer.append(para);
 
             }
-
-
         }
 
-
-        setInterval(getDatabase(), 1000);
-
-
-
-
+        getDatabase();
 
     </script>
 
