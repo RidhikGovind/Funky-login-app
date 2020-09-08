@@ -5,8 +5,8 @@ require('dotenv').config()
 
 
 const app = express();
-const port = 3000;
-// const api = process.env.API_KEY;
+const port = process.env.port || 3000; //giving an option to either run it on port in .env or @3000
+
 
 app.use(express.static('public'))
 app.use(express.json({ limit: '2mb' }));
@@ -14,7 +14,7 @@ app.use(express.json({ limit: '2mb' }));
 const database = new Datastore('database.db')
 database.loadDatabase();
 
-app.listen(port, () => console.log('hey this is working at port 3000'));
+app.listen(port, () => console.log(`hey this is working at port ${port}`));
 // console.log(process.env);
 
 app.post(('/sample'), (request, response) => {
