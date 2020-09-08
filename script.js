@@ -9,7 +9,7 @@ const port = 3000;
 // const api = process.env.API_KEY;
 
 app.use(express.static('public'))
-app.use(express.json({ limit: '2mb' }))
+app.use(express.json({ limit: '2mb' }));
 
 const database = new Datastore('database.db')
 database.loadDatabase();

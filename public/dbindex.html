@@ -11,15 +11,51 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,300&display=swap" rel="stylesheet">
 
 
 
-    <title>Database Index</title>
+    <title>Database Login App</title>
 
 
     <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+
+
+        }
+
+        h1 {
+            background-color: #3E486F;
+            color: white;
+            width: fit-content;
+            padding: 2px 10px;
+            border-radius: 10px;
+        }
+
+        body {
+            padding: 10px;
+            background-color: #007ea7;
+            background-image: linear-gradient(315deg, #007ea7 0%, #80ced7 74%);
+            height: 100vh;
+        }
+
         #mapid {
-            height: 300px;
+            height: 250px;
+            border-radius: 10px;
+
+        }
+
+        .dbContainer {}
+
+        p {
+            margin: 10px;
+            background-color: #313750;
+            text-align: center;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+
         }
     </style>
 </head>
@@ -29,57 +65,67 @@
 
     <div id="mapid"></div>
 
+    <div class="dbContainer"></div>
+
+
+
 
 
 
     <script>
-       
+
         async function getDatabase() {
             const response = await fetch('/database');
             const data = await response.json();
-           
+            const dbContainer = document.querySelector('.dbContainer')
+            const mapidd = document.getElementById('mapid');
+            const lat = data[0].latitude;
+            const long = data[0].longitude;
+
+            // console.log(data[0].latitude, data[0].longitude);
+
+            const mymap = L.map('mapid').setView([lat, long], 15);
+
+            const attribution =
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+            const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+            const tiles = L.tileLayer(tileUrl, { attribution });
+            tiles.addTo(mymap);
+            const marker = L.marker([lat, long]).addTo(mymap);
+
+
+
 
             for (logs of data) {
-                const p = document.createElement('p');
+                const para = document.createElement('p');
                 const userName = document.createElement('div');
                 const userPassword = document.createElement('div');
                 const mood = document.createElement('div');
                 const coords = document.createElement('div');
-                const latitude = logs.latitude;
-                const longitude = logs.longitude;
 
 
 
-                userName.textContent = logs.name;
-                userPassword.textContent = logs.password;
-                mood.textContent = logs.mood;
-                coords.textContent = `Latitude is ${latitude} and Longitude is ${longitude}`
-                p.append(userName, userPassword, mood, coords);
 
-                document.body.append(p);
+                userName.textContent = `Your Funky Username is - ${logs.name}`;
+                userPassword.textContent = `Your Freaky Password is - ${logs.password}`;
+                mood.textContent = `Your forever mood - ${logs.mood}`;
+                coords.textContent = `Latitude is ${lat} and Longitude is ${long}`
+                para.append(userName, userPassword, mood, coords);
 
+                dbContainer.append(para);
 
-                 const map = L.map('mapid').setView([latitude,longitude], 13)
-
-            L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                maxZoom: 18,
-                id: 'mapbox/streets-v11',
-                tileSize: 512,
-                zoomOffset: -1,
-                accessToken: 'pk.eyJ1IjoicmlkejEwMSIsImEiOiJja2VmcXdiNzcxZWF3MnpydjJtbnFkcWExIn0.35lxBR8ndHUX2SfDZ6s1SQ'
-            }).addTo(map);
-
-             const marker = L.marker([latitude,longitude]).addTo(map);
             }
 
-           
+
         }
 
-       
+
+
         getDatabase();
 
-        
+
+
+
     </script>
 
 
