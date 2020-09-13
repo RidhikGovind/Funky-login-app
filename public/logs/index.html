@@ -26,16 +26,23 @@
 <body>
     <h1>Database for FunkyLogin</h1>
 
+    <!-- <div class="clear-btn">Clear Entries</div> 
+    This is a part of further improvement -->
+
     <div id="mapid"></div>
 
     <div class="dbContainer"></div>
 
     <script>
+        const dbContainer = document.querySelector('.dbContainer')
+      
+        
+        
 
         async function getDatabase() {
             const response = await fetch('/database');
             const data = await response.json();
-            const dbContainer = document.querySelector('.dbContainer')
+            
             const mapidd = document.getElementById('mapid');
             const lat = data[0].latitude;
             const long = data[0].longitude;

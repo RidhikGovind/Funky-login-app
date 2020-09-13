@@ -97,7 +97,7 @@ button:hover {
 
 .app-guide-btn {
 
-    background-color: white;
+    background-color: none;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -109,6 +109,7 @@ button:hover {
     cursor: pointer;
     animation: bounce 2.5s linear infinite;
     transition: 0.3s ease all;
+    padding: 10px;
 }
 
 @media(max-width:370px) {
