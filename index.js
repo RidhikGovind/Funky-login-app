@@ -5,7 +5,7 @@ require('dotenv').config()
 
 
 const app = express();
-const port = process.env.port || 3000; //giving an option to either run it on port in .env or @3000
+const port = process.env.PORT || 3000; //giving an option to either run it on port in .env or @3000
 
 
 app.use(express.static('public'))
