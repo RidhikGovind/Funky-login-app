@@ -69,15 +69,13 @@
                 const userName = document.createElement('div');
                 const userPassword = document.createElement('div');
                 const mood = document.createElement('div');
-                const coords = document.createElement('div');
+               
 
                 userName.textContent = `Your Funky Username is - ${logs.name}`;
                 userPassword.textContent = `Your Freaky Password is - ${logs.password}`;
                 mood.textContent = `Your forever mood - ${logs.mood}`;
-                coords.textContent = `Latitude is ${lat} and Longitude is ${long}`
-                para.append(userName, userPassword, mood, coords);
-
-                dbContainer.append(para);
+                para.append(userName, userPassword, mood);
+                 dbContainer.append(para);
 
             }
         }
