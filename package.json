@@ -4,7 +4,7 @@
   "description": "A simple login app that stores details of user in a database a\u001b[C\u001b[C\u001b[C\u001b[C",
   "main": "script.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
