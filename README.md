@@ -23,4 +23,7 @@
 * Created a RESTful API to fetch data from OpenStreetMap.
 * How to use dotenv to store the accessToken / Secret keys in a key:value form. 
 
+[LIVE DEMO](https://funkylogin.herokuapp.com)
+
+![demogif](demo/demo.gif)
 
