@@ -1,4 +1,4 @@
-## FunkyLogin App
+## FunkyLogin App :arrow_double_down:
 
 ### A simple login app that
 * Accepts a user login name, password and current mood 
@@ -6,7 +6,7 @@
 * Collects the latitude and longitude of the user and pinpoints the locations of the user on a map
 * The stored database are also display in another page (cby clicking View database)
 
-### Tech Stack 
+### Tech Stack  :computer:
 #### FRONT-END - HTML | CSS | JAVASCRIPT 
 #### BACKEND - NODE.JS(EXPRESS)
 #### MAPPING - LEAFLET.JS, OPENSTREETMAP
@@ -14,7 +14,7 @@
 
 
 
-### Things that I have learned 
+### Things that I have learned   :notebook_with_decorative_cover:
 * Host a static webpage using express.js
 * Use nedb, a lightweight database to store the login info of the user
 * Understand in detail the differences between client side and server side rendering
