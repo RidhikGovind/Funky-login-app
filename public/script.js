@@ -3,7 +3,7 @@ const form = document.querySelector('form')
         const password = document.querySelector('.password')
         const mood = document.querySelector('.mood');
 
-        console.log("****HEY YOU WIERDO, YES YOU*** - If you are reading this, then you were probably curious about how this code works hence proving you are Awesomeeee ! @fluffyridz is my Twitter handle. Come let's connect and become friends(text me up with our secret code == *BlehCodingLife*) ")
+     
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
